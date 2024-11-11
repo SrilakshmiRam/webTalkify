@@ -53,7 +53,7 @@ app.post('/login',async(req,res)=>{
             if (isPasswordMatched===true){
                 const payload={username}
                 const jwtToken=jwt.sign(payload,'my_secret_token')
-                res.status(201).json({'jwt_token':jwtToken})
+                res.status(201).json({'jwt_token':jwtToken, userId:dbUser.id})
             }
             else{
                 res.status(400).json({ message: 'Invalid username or password'})
